@@ -4,10 +4,13 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-#root {
+body {
     user-select: none;
-    height: 100vh;
 
     background-color: var(--background-color);
     color: var(--font-color);
+}
+
+nav {
+    background-color: var(--background-color);
 }

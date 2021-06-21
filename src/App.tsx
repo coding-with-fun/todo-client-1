@@ -3,7 +3,7 @@ import HomeScreen from "./screens/HomeScreen";
 
 const App = () => {
     return (
-        <div>
+        <div className="h-screen">
             <Navbar />
             <HomeScreen />
         </div>
