@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { ToDoDataContext } from "../contexts/ToDoDataContext";
 
 const Navbar = () => {
     const { theme, handleToggleTheme } = useContext(ThemeContext);
+    const { handleToggleModal } = useContext(ToDoDataContext);
 
     return (
         <nav className="w-screen shadow-lg fixed top-0">
@@ -44,9 +46,12 @@ const Navbar = () => {
                     )}
                 </div>
                 <div className="flex items-center justify-end">
-                    <a href="/" className="mx-1.5 sm:mx-6">
-                        home
-                    </a>
+                    <span
+                        className="mx-1.5 sm:mx-6 cursor-pointer sm:hidden block"
+                        onClick={handleToggleModal}
+                    >
+                        add new todo
+                    </span>
 
                     <a href="/" className="mx-1.5 sm:mx-6">
                         sign out

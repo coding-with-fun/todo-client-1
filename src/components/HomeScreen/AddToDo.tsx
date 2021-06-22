@@ -1,14 +1,11 @@
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Modal from "@material-ui/core/Modal";
-import { Fragment, useState } from "react";
+import { Fragment, useContext } from "react";
+import { ToDoDataContext } from "../../contexts/ToDoDataContext";
 
 const AddToDo = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const handleToggleModal = () => {
-        setIsModalOpen(!isModalOpen);
-    };
+    const { isModalOpen, handleToggleModal } = useContext(ToDoDataContext);
 
     return (
         <Fragment>
@@ -45,7 +42,7 @@ const AddToDo = () => {
                 }}
             >
                 <Fade in={isModalOpen}>
-                    <div className="bg-gray-300">
+                    <div className="rounded-md sm:py-12 py-6 sm:px-16 px-8 mx-6 add_todo_modal">
                         <h2 id="transition-modal-title">Transition modal</h2>
                         <p id="transition-modal-description">
                             react-transition-group animates me.

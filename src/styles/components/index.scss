@@ -2,3 +2,9 @@
     background-color: var(--input-background-color);
     color: var(--input-text-color);
 }
+
+.add_todo_modal:focus-visible {
+    outline: none !important;
+    background-color: var(--font-color);
+    color: var(--background-color);
+}
