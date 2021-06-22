@@ -3,8 +3,14 @@
     color: var(--input-text-color);
 }
 
-.add_todo_modal:focus-visible {
+.add_todo_modal:focus-visible,
+.add_todo_modal {
     outline: none !important;
     background-color: var(--font-color);
     color: var(--background-color);
+}
+
+.todo_input_helper_text {
+    color: var(--error-message-color);
+    font-weight: 500;
 }
