@@ -4,7 +4,7 @@ import ToDoList from "../components/HomeScreen/ToDoList";
 
 const HomeScreen = () => {
     return (
-        <Container maxWidth="md" className="h-full py-14">
+        <Container maxWidth="sm" className="h-full py-14 overflow-hidden">
             <SearchField />
             <ToDoList />
         </Container>
