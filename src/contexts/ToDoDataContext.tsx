@@ -11,6 +11,7 @@ const defaultToDoDataContextValues: ToDoDataContextProps = {
     handleToggleModal: () => {},
     toggleToDoComplete: () => {},
     deleteToDoItem: () => {},
+    searchToDo: () => {},
 };
 
 export const ToDoDataContext = createContext<ToDoDataContextProps>(
@@ -19,6 +20,9 @@ export const ToDoDataContext = createContext<ToDoDataContextProps>(
 
 const ToDoDataProvider: FC = ({ children }) => {
     const [todoList, setTodoList] = useState(
+        defaultToDoDataContextValues.todoList
+    );
+    const [todoListCopy, setTodoListCopy] = useState(
         defaultToDoDataContextValues.todoList
     );
     const [isModalOpen, setIsModalOpen] = useState(
@@ -31,6 +35,7 @@ const ToDoDataProvider: FC = ({ children }) => {
 
     const addToDo = (data: ToDoItem) => {
         setTodoList([...todoList, data]);
+        setTodoListCopy([...todoList, data]);
     };
 
     const toggleToDoComplete = (index: number) => {
@@ -38,6 +43,7 @@ const ToDoDataProvider: FC = ({ children }) => {
 
         localToDoList[index].isCompleted = !localToDoList[index].isCompleted;
         setTodoList(localToDoList);
+        setTodoListCopy(localToDoList);
     };
 
     const deleteToDoItem = (index: number) => {
@@ -45,6 +51,15 @@ const ToDoDataProvider: FC = ({ children }) => {
 
         localToDoList.splice(index, 1);
         setTodoList(localToDoList);
+        setTodoListCopy(localToDoList);
+    };
+
+    const searchToDo = (value: string) => {
+        const localToDoList = [...todoListCopy];
+        let sortedList = [];
+
+        sortedList = localToDoList.filter((todo) => todo.title.includes(value));
+        setTodoList(sortedList);
     };
 
     return (
@@ -57,6 +72,7 @@ const ToDoDataProvider: FC = ({ children }) => {
                 addToDo,
                 toggleToDoComplete,
                 deleteToDoItem,
+                searchToDo,
             }}
         >
             {children}

@@ -87,7 +87,7 @@ const AddToDo = () => {
                 }}
             >
                 <Fade in={isModalOpen}>
-                    <div className="rounded-md sm:py-12 py-6 sm:px-16 px-8 sm:mx-6 mx-0 add_todo_modal sm:w-1/3 w-3/4">
+                    <div className="rounded-md sm:py-12 py-6 sm:px-16 px-8 sm:mx-6 mx-0 add_todo_modal sm:w-1/2 w-3/4">
                         <div className="flex justify-between items-center">
                             <p className="text-2xl">Add New ToDo Item</p>
 

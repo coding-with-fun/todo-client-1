@@ -13,7 +13,7 @@ const ToDoList = () => {
                 return (
                     <div
                         key={todo.id}
-                        className="flex items-center px-4 cursor-pointer my-2 py-2 border-2 rounded-md"
+                        className="flex items-center px-4 cursor-pointer sm:my-4 my-2 py-2 border-2 rounded-md"
                     >
                         <div
                             className={`${

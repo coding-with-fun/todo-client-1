@@ -11,4 +11,5 @@ export interface ToDoDataContextProps {
     handleToggleModal: () => void;
     toggleToDoComplete: (index: number) => void;
     deleteToDoItem: (index: number) => void;
+    searchToDo: (value: string) => void;
 }
