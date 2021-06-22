@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import HomeScreen from "./screens/HomeScreen";
 
@@ -6,6 +7,7 @@ const App = () => {
         <div className="h-screen">
             <Navbar />
             <HomeScreen />
+            <Footer />
         </div>
     );
 };

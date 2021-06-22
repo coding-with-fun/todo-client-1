@@ -1,9 +1,11 @@
 .dark {
     --background-color: #424242;
     --font-color: #fff;
+    --hovered-font-color: #cccccc;
 }
 
 .light {
     --background-color: #fff;
     --font-color: rgba(0, 0, 0, 0.87);
+    --hovered-font-color: #333333;
 }

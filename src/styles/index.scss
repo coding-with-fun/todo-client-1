@@ -1,4 +1,4 @@
-@import "./globals";
+@import "./variables";
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
@@ -11,6 +11,12 @@ body {
     color: var(--font-color);
 }
 
-nav {
+nav,
+footer {
     background-color: var(--background-color);
+}
+
+a:hover {
+    color: var(--hovered-font-color);
+    font-weight: bold;
 }
