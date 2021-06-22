@@ -5,8 +5,6 @@ const ToDoList = () => {
     const { todoList, toggleToDoComplete, deleteToDoItem } =
         useContext(ToDoDataContext);
 
-    console.log(todoList);
-
     return (
         <div className="overflow-y-scroll max-h-full pb-16">
             {todoList.map((todo, index) => {

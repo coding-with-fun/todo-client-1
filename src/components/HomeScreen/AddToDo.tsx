@@ -120,7 +120,6 @@ const AddToDo = () => {
                                 onChange={handleUserInput}
                                 value={userInput.title}
                                 className="block w-full px-4 py-2 mt-2 rounded-md focus:outline-none"
-                                onSubmit={handleSubmitData}
                                 autoFocus
                                 required
                             />
