@@ -14,3 +14,12 @@
     color: var(--error-message-color);
     font-weight: 500;
 }
+
+.todo_list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.todo_list::-webkit-scrollbar {
+    display: none;
+}
