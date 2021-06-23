@@ -23,3 +23,8 @@
 .todo_list::-webkit-scrollbar {
     display: none;
 }
+
+.auth_button {
+    background-color: var(--font-color);
+    color: var(--background-color);
+}

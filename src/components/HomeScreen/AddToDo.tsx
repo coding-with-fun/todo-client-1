@@ -5,19 +5,17 @@ import { ChangeEventHandler, Fragment, useContext, useState } from "react";
 import { ToDoDataContext } from "../../contexts/ToDoDataContext";
 
 const AddToDo = () => {
+    const initialData = {
+        title: "",
+        titleError: false,
+    };
     const { isModalOpen, handleToggleModal, addToDo } =
         useContext(ToDoDataContext);
 
-    const [userInput, setUserInput] = useState({
-        title: "",
-        titleError: false,
-    });
+    const [userInput, setUserInput] = useState(initialData);
 
     const handleCloseModal = () => {
-        setUserInput({
-            title: "",
-            titleError: false,
-        });
+        setUserInput(initialData);
         handleToggleModal();
     };
 
@@ -42,12 +40,7 @@ const AddToDo = () => {
             };
 
             addToDo(data);
-
-            setUserInput({
-                title: "",
-                titleError: false,
-            });
-
+            setUserInput(initialData);
             handleToggleModal();
         }
     };
