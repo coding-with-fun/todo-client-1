@@ -15,12 +15,14 @@
     font-weight: 500;
 }
 
-.todo_list {
+.todo_list,
+.auth_screen {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-.todo_list::-webkit-scrollbar {
+.todo_list::-webkit-scrollbar,
+.auth_screen::-webkit-scrollbar {
     display: none;
 }
 

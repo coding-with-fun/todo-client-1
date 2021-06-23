@@ -1,11 +1,13 @@
+import { useContext } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
 import AuthScreen from "../screens/AuthScreen";
 import HomeScreen from "../screens/HomeScreen";
 
 const WrappedRouter = () => {
-    const userToken = localStorage.getItem("todo-user-token");
+    const { isUserAuthenticated } = useContext(UserContext);
 
-    return userToken ? (
+    return isUserAuthenticated ? (
         <Switch>
             <Route exact path="/" component={HomeScreen} />
             <Redirect to="/" />

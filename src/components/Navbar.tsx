@@ -2,15 +2,20 @@ import { useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { ToDoDataContext } from "../contexts/ToDoDataContext";
+import { UserContext } from "../contexts/UserContext";
 
 const Navbar = () => {
     const { theme, handleToggleTheme } = useContext(ThemeContext);
     const { handleToggleModal } = useContext(ToDoDataContext);
-
-    const userToken = localStorage.getItem("todo-user-token");
+    const { isUserAuthenticated, handleUserAuthentication } =
+        useContext(UserContext);
 
     const currentPath = useLocation();
     const authFlag = currentPath.pathname === "/signin" ? 0 : 1;
+
+    const handleUserSignOut = () => {
+        handleUserAuthentication("");
+    };
 
     return (
         <nav className="w-screen shadow-lg fixed top-0">
@@ -52,7 +57,7 @@ const Navbar = () => {
                     )}
                 </div>
                 <div className="flex items-center justify-end">
-                    {userToken ? (
+                    {isUserAuthenticated ? (
                         <>
                             <span
                                 className="mx-1.5 sm:mx-6 cursor-pointer sm:hidden block"
@@ -61,7 +66,10 @@ const Navbar = () => {
                                 add new todo
                             </span>
 
-                            <span className="mx-1.5 sm:mx-6 cursor-pointer">
+                            <span
+                                className="mx-1.5 sm:mx-6 cursor-pointer"
+                                onClick={handleUserSignOut}
+                            >
                                 sign out
                             </span>
                         </>

@@ -1,10 +1,13 @@
 import Container from "@material-ui/core/Container";
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useContext, useState } from "react";
 import { useLocation, withRouter } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
 
 const AuthScreen = () => {
     const currentPath = useLocation();
     const authFlag = currentPath.pathname === "/signin" ? 0 : 1;
+
+    const { handleUserAuthentication } = useContext(UserContext);
 
     const initialData = {
         name: "",
@@ -31,8 +34,15 @@ const AuthScreen = () => {
         });
     };
 
+    const handleSubmitData = () => {
+        handleUserAuthentication("abc");
+    };
+
     return (
-        <Container maxWidth="sm" className="h-full py-14 overflow-hidden">
+        <Container
+            maxWidth="sm"
+            className="h-full py-14 overflow-scroll auth_screen"
+        >
             <h1 className="text-5xl mt-11">
                 {authFlag ? "Sign Up" : "Sign In"}
             </h1>
@@ -137,22 +147,23 @@ const AuthScreen = () => {
                 <></>
             )}
 
-            <button className="flex items-center px-2 py-2 font-medium tracking-wide capitalize transition-colors duration-200 transform rounded-md focus:outline-none auth_button">
+            <button
+                className="flex items-center px-2 py-2 mb-8 font-medium tracking-wide capitalize transition-colors duration-200 transform rounded-md focus:outline-none auth_button"
+                onClick={handleSubmitData}
+            >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
                 >
                     <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
+                        fillRule="evenodd"
+                        d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z"
+                        clipRule="evenodd"
                     />
                 </svg>
-                <span className="mx-1">Save</span>
+                <span className="mx-1">{authFlag ? "Sign Up" : "Sign In"}</span>
             </button>
         </Container>
     );
