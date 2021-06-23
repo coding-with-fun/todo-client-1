@@ -1,14 +1,17 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/index.css";
 import App from "./App";
 import ThemeProvider from "./contexts/ThemeContext";
+import ToDoDataProvider from "./contexts/ToDoDataContext";
+import UserProvider from "./contexts/UserContext";
+import "./styles/index.scss";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <ThemeProvider>
-            <App />
-        </ThemeProvider>
-    </React.StrictMode>,
+    <ThemeProvider>
+        <UserProvider>
+            <ToDoDataProvider>
+                <App />
+            </ToDoDataProvider>
+        </UserProvider>
+    </ThemeProvider>,
     document.getElementById("root")
 );

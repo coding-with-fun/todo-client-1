@@ -1,7 +1,4 @@
-import React, { createContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { FC } from "react";
+import { createContext, FC, useEffect, useState } from "react";
 import { ThemeContextProps } from "../Interfaces/ThemeContextInterface";
 
 const defaultThemeContextValues: ThemeContextProps = {

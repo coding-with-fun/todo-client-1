@@ -1,0 +1,35 @@
+@import "./variables";
+@import "./components/index";
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+    user-select: none;
+
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+
+nav,
+footer {
+    background-color: var(--background-color);
+}
+
+footer {
+    a {
+        color: var(--hovered-font-color);
+        font-weight: bold;
+    }
+}
+
+input {
+    color: var(--input-text-color);
+    background-color: var(--input-background-color);
+}
+
+button {
+    background-color: var(--background-color);
+    color: var(--font-color);
+}

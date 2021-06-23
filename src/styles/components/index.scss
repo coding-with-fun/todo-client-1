@@ -1,0 +1,32 @@
+.add_todo_button {
+    background-color: var(--input-background-color);
+    color: var(--input-text-color);
+}
+
+.add_todo_modal:focus-visible,
+.add_todo_modal {
+    outline: none !important;
+    background-color: var(--font-color);
+    color: var(--background-color);
+}
+
+.todo_input_helper_text {
+    color: var(--error-message-color);
+    font-weight: 500;
+}
+
+.todo_list,
+.auth_screen {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.todo_list::-webkit-scrollbar,
+.auth_screen::-webkit-scrollbar {
+    display: none;
+}
+
+.auth_button {
+    background-color: var(--font-color);
+    color: var(--background-color);
+}
