@@ -28,14 +28,27 @@ const AuthScreen = () => {
     const [userInput, setUserInput] = useState(initialData);
 
     const handleUserInput: ChangeEventHandler<HTMLInputElement> = (e) => {
+        const errorField = `${e.target.id}Error`;
+
         setUserInput({
             ...userInput,
             [e.target.id]: e.target.value,
+            [errorField]: !Boolean(e.target.value),
         });
     };
 
     const handleSubmitData = () => {
-        handleUserAuthentication("abc");
+        if (
+            [authFlag && Boolean(userInput.name)] &&
+            Boolean(userInput.username) && [
+                authFlag && Boolean(userInput.email),
+            ] &&
+            Boolean(userInput.password) && [
+                authFlag && Boolean(userInput.confirmationPassword),
+            ]
+        ) {
+            handleUserAuthentication("abc");
+        }
     };
 
     return (
@@ -131,7 +144,7 @@ const AuthScreen = () => {
                     </label>
                     <input
                         id="confirmationPassword"
-                        type="text"
+                        type="password"
                         onChange={handleUserInput}
                         value={userInput.confirmationPassword}
                         className="block w-full px-4 py-2 mt-2 rounded-md focus:outline-none"
