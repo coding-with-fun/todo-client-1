@@ -1,5 +1,5 @@
 import Container from "@material-ui/core/Container";
-import { ChangeEventHandler, useContext, useState } from "react";
+import { ChangeEventHandler, useContext, useEffect, useState } from "react";
 import { useLocation, withRouter } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
@@ -26,6 +26,12 @@ const AuthScreen = () => {
         confirmationPasswordError: false,
     };
     const [userInput, setUserInput] = useState(initialData);
+
+    useEffect(() => {
+        setUserInput(initialData);
+
+        // eslint-disable-next-line
+    }, [authFlag]);
 
     const handleUserInput: ChangeEventHandler<HTMLInputElement> = (e) => {
         const errorField = `${e.target.id}Error`;

@@ -20,19 +20,17 @@ const AddToDo = () => {
     };
 
     const handleUserInput: ChangeEventHandler<HTMLInputElement> = (e) => {
+        const errorField = `${e.target.id}Error`;
+
         setUserInput({
             ...userInput,
             [e.target.id]: e.target.value,
+            [errorField]: !Boolean(e.target.value),
         });
     };
 
     const handleSubmitData = () => {
-        if (!userInput.title) {
-            setUserInput({
-                ...userInput,
-                titleError: true,
-            });
-        } else {
+        if (Boolean(userInput.title)) {
             const data = {
                 id: Math.random() * 1000,
                 title: userInput.title,
