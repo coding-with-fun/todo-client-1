@@ -2,12 +2,19 @@ import { useContext } from "react";
 import { ToDoDataContext } from "../../contexts/ToDoDataContext";
 
 const ToDoList = () => {
-    const { todoList, toggleToDoComplete, deleteToDoItem } =
-        useContext(ToDoDataContext);
+    const {
+        todoList,
+        searchedTodoList,
+        isListSearched,
+        toggleToDoComplete,
+        deleteToDoItem,
+    } = useContext(ToDoDataContext);
+
+    const localTodoList = isListSearched ? searchedTodoList : todoList;
 
     return (
         <div className="overflow-y-scroll max-h-full pb-16 todo_list">
-            {todoList.map((todo, index) => {
+            {localTodoList.map((todo, index) => {
                 return (
                     <div
                         key={todo.id}

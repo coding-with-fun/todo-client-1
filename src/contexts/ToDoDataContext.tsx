@@ -6,6 +6,8 @@ import {
 
 const defaultToDoDataContextValues: ToDoDataContextProps = {
     todoList: [],
+    searchedTodoList: [],
+    isListSearched: false,
     isModalOpen: false,
     addToDo: () => {},
     handleToggleModal: () => {},
@@ -22,8 +24,11 @@ const ToDoDataProvider: FC = ({ children }) => {
     const [todoList, setTodoList] = useState(
         defaultToDoDataContextValues.todoList
     );
-    const [todoListCopy, setTodoListCopy] = useState(
+    const [searchedTodoList, setSearchedTodoList] = useState(
         defaultToDoDataContextValues.todoList
+    );
+    const [isListSearched, setIsListSearched] = useState(
+        defaultToDoDataContextValues.isListSearched
     );
     const [isModalOpen, setIsModalOpen] = useState(
         defaultToDoDataContextValues.isModalOpen
@@ -35,7 +40,6 @@ const ToDoDataProvider: FC = ({ children }) => {
 
     const addToDo = (data: ToDoItem) => {
         setTodoList([...todoList, data]);
-        setTodoListCopy([...todoList, data]);
     };
 
     const toggleToDoComplete = (index: number) => {
@@ -43,7 +47,6 @@ const ToDoDataProvider: FC = ({ children }) => {
 
         localToDoList[index].isCompleted = !localToDoList[index].isCompleted;
         setTodoList(localToDoList);
-        setTodoListCopy(localToDoList);
     };
 
     const deleteToDoItem = (index: number) => {
@@ -51,21 +54,23 @@ const ToDoDataProvider: FC = ({ children }) => {
 
         localToDoList.splice(index, 1);
         setTodoList(localToDoList);
-        setTodoListCopy(localToDoList);
     };
 
     const searchToDo = (value: string) => {
-        const localToDoList = [...todoListCopy];
+        const localToDoList = [...todoList];
         let sortedList = [];
 
         sortedList = localToDoList.filter((todo) => todo.title.includes(value));
-        setTodoList(sortedList);
+        setSearchedTodoList(sortedList);
+        setIsListSearched(Boolean(value));
     };
 
     return (
         <ToDoDataContext.Provider
             value={{
                 todoList,
+                searchedTodoList,
+                isListSearched,
                 isModalOpen,
 
                 handleToggleModal,

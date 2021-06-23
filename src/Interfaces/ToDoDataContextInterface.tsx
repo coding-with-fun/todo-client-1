@@ -6,6 +6,8 @@ export interface ToDoItem {
 
 export interface ToDoDataContextProps {
     todoList: ToDoItem[];
+    searchedTodoList: ToDoItem[];
+    isListSearched: boolean;
     isModalOpen: boolean;
     addToDo: (data: ToDoItem) => void;
     handleToggleModal: () => void;
