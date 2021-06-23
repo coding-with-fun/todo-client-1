@@ -1,10 +1,16 @@
 import { useContext } from "react";
+import { useLocation, Link } from "react-router-dom";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { ToDoDataContext } from "../contexts/ToDoDataContext";
 
 const Navbar = () => {
     const { theme, handleToggleTheme } = useContext(ThemeContext);
     const { handleToggleModal } = useContext(ToDoDataContext);
+
+    const userToken = localStorage.getItem("todo-user-token");
+
+    const currentPath = useLocation();
+    const authFlag = currentPath.pathname === "/signin" ? 0 : 1;
 
     return (
         <nav className="w-screen shadow-lg fixed top-0">
@@ -46,16 +52,24 @@ const Navbar = () => {
                     )}
                 </div>
                 <div className="flex items-center justify-end">
-                    <span
-                        className="mx-1.5 sm:mx-6 cursor-pointer sm:hidden block"
-                        onClick={handleToggleModal}
-                    >
-                        add new todo
-                    </span>
+                    {userToken ? (
+                        <>
+                            <span
+                                className="mx-1.5 sm:mx-6 cursor-pointer sm:hidden block"
+                                onClick={handleToggleModal}
+                            >
+                                add new todo
+                            </span>
 
-                    <a href="/" className="mx-1.5 sm:mx-6">
-                        sign out
-                    </a>
+                            <span className="mx-1.5 sm:mx-6 cursor-pointer">
+                                sign out
+                            </span>
+                        </>
+                    ) : authFlag ? (
+                        <Link to="/signin">Sign In</Link>
+                    ) : (
+                        <Link to="/signup">Sign Up</Link>
+                    )}
                 </div>
             </div>
         </nav>
